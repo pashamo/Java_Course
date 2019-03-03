@@ -30,6 +30,27 @@ NOTE: Do not add a main method to the solution code.
 public class codingExercise25 {
   public static void main(String[] args) {
     System.out.println("-----codingExercise25-----");
+
+    System.out.println("getLargestPrime (21):\t" + getLargestPrime (21));
+    System.out.println("getLargestPrime (217):\t" + getLargestPrime (217));
+    System.out.println("getLargestPrime (0):\t" + getLargestPrime (0));
+    System.out.println("getLargestPrime (45):\t" + getLargestPrime (45));
+    System.out.println("getLargestPrime (-1):\t" + getLargestPrime (-1));
+
     System.out.println("-----END-----");
+  }
+
+  public static int getLargestPrime(int number) {
+    if (number < 2) {return -1;}
+
+    int lp = 0;
+
+    for(int i = number; i > 2; i--) {
+      while(number%i==0) {
+        if (lp < i) {lp = i;}
+        number/=i;
+      }
+    }
+    return lp;
   }
 }
