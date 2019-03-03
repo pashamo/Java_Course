@@ -35,6 +35,60 @@ NOTE: Do not add a main method to the solution code.
 public class codingExercise24 {
   public static void main(String[] args) {
     System.out.println("-----codingExercise24-----");
+
+    System.out.println("canPack (1, 0, 4):\t" + canPack(1,0,4));
+    System.out.println("canPack (1, 0, 5):\t" + canPack(1,0,5));
+    System.out.println("canPack (0, 5, 4):\t" + canPack(0,5,4));
+    System.out.println("canPack (5, 3, 24):\t" + canPack(5,3,24));
+    System.out.println("canPack (2, 2, 11):\t" + canPack(2,2,11));
+    System.out.println("canPack (-3, 2, 12):\t" + canPack(-3,2,12));
+
     System.out.println("-----END-----");
+  }
+
+  public static boolean canPack(int bigCount, int smallCount, int goal) {
+
+    int totalSmall = smallCount;
+    int totalBig = bigCount*5;
+    int totalWeight = totalSmall + totalBig;
+
+    if (bigCount<0||smallCount<0||goal<0) {return false;}
+
+    if (totalWeight < goal) {return false;}
+    else if (totalWeight == goal) {return true;}
+    else if (totalWeight > goal) {
+      if (bigCount == 0 || smallCount == 0) {
+        if (bigCount == 0) {return true;}
+        else if (smallCount == 0) {return goal%5==0?true:false;}
+      } else {
+        totalWeight = 0;
+        for(int i = 0; i< bigCount; i++) {
+          totalWeight+=5;
+          if(goal < totalWeight) {break;}
+          if (goal == totalWeight) {return true;}
+          for(int j = 0; j< smallCount; j++) {
+            totalWeight++;
+            if(goal == totalWeight) {
+              return true;
+            }
+          }
+          totalWeight-=smallCount;
+        }
+
+        totalWeight = 0;
+        for(int i = 0; i< smallCount; i++) {
+          totalWeight++;
+          for(int j = 0; j< bigCount; j++) {
+            totalWeight+=5;
+            if(goal == totalWeight) {
+              return true;
+            }
+          }
+          totalWeight-=smallCount;
+        }
+
+      }
+    }
+    return false;
   }
 }
