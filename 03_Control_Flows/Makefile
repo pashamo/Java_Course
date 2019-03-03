@@ -2,7 +2,7 @@ JR = time java
 JCC = javac
 JFLAGS = -g
 
-default: switchCF.class codingExercise12.class codingExercise13.class codingExercise14.class codingExercise15.class codingExercise16.class codingExercise17.class codingExercise18.class codingExercise19.class codingExercise20.class codingExercise21.class codingExercise22.class codingExercise23.class codingExercise24.class codingExercise25.class codingExercise26.class codingExercise27.class codingExercise28.class forLoop.class whileLoop.class parsingString.class
+default: switchCF.class codingExercise12.class codingExercise13.class codingExercise14.class codingExercise15.class codingExercise16.class codingExercise17.class codingExercise18.class codingExercise19.class codingExercise20.class codingExercise21.class codingExercise22.class codingExercise23.class codingExercise24.class codingExercise25.class codingExercise26.class codingExercise27.class codingExercise28.class forLoop.class whileLoop.class parsingString.class readUserInput.class
 
 
 switchCF.class: switchCF.java
@@ -68,6 +68,9 @@ whileLoop.class: whileLoop.java
 parsingString.class: parsingString.java
 	$(JCC) $(JFLAGS) parsingString.java
 	$(JR) parsingString
+readUserInput.class: readUserInput.java
+	$(JCC) $(JFLAGS) readUserInput.java
+	$(JR) readUserInput
 
 clean:
 	$(RM) *.class
