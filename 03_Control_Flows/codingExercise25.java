@@ -44,11 +44,12 @@ public class codingExercise25 {
     if (number < 2) {return -1;}
 
     int lp = 0;
+    int lp2 = 0;
 
-    for(int i = number; i > 2; i--) {
-      while(number%i==0) {
+    for(int i = 2; i <= number; i++) {
+      if(number%i==0) {
+        if(i == number && lp > 0) {break;}
         if (lp < i) {lp = i;}
-        number/=i;
       }
     }
     return lp;
