@@ -10,7 +10,7 @@ Write the following methods (instance methods):
 *Method named getAdditionResult without any parameters, it needs to return the result of adding the field values of firstNumber and secondNumber.
 *Method named getSubtractionResult without any parameters, it needs to return the result of subtracting the field values of secondNumber from the firstNumber.
 *Method named getMultiplicationResult without any parameters, it needs to return the result of multiplying the field values of firstNumber and secondNumber.
-*Method named getDivisionResult without any parameters it needs to return the result of dividing the field values of firstNumber by the secondNumber. In case the value of secondNumber is 0 then return 0.
+*Method named getDivisionResult without any parameters it needs to return the result of dividing the field values of firstNumber by the secondNumber. In case the value of secondNumber is 0 then return 0;.
 
 TEST EXAMPLE
 
@@ -50,6 +50,51 @@ NOTE: Do not add the main method to the solution code.
 public class codingExercise29 {
   public static void main(String[] args) {
     System.out.println("-----codingExercise29-----");
+
+    SimpleCalculator calculator = new SimpleCalculator();
+    calculator.setFirstNumber(5.0);
+    calculator.setSecondNumber(4);
+    System.out.println("add= " + calculator.getAdditionResult());
+    System.out.println("subtract= " + calculator.getSubtractionResult());
+    calculator.setFirstNumber(5.25);
+    calculator.setSecondNumber(0);
+    System.out.println("multiply= " + calculator.getMultiplicationResult());
+    System.out.println("divide= " + calculator.getDivisionResult());
+
     System.out.println("-----END-----");
+  }
+
+  public static class SimpleCalculator {
+    private double firstNumber;
+    private double secondNumber;
+
+    public double getFirstNumber(){
+      return this.firstNumber;
+    }
+    public double getSecondNumber(){
+      return this.secondNumber;
+    }
+    public void setFirstNumber(double firstNumber){
+      this.firstNumber = firstNumber;
+    }
+    public void setSecondNumber(double secondNumber){
+      this.secondNumber = secondNumber;
+    }
+    public double getAdditionResult(){
+      return this.firstNumber+this.secondNumber;
+    }
+    public double getSubtractionResult(){
+      return this.firstNumber-this.secondNumber;
+    }
+    public double getMultiplicationResult(){
+      return this.firstNumber*this.secondNumber;
+    }
+    public double getDivisionResult(){
+      if (this.secondNumber==0) {
+        return 0;
+      } else {
+        return this.firstNumber/this.secondNumber;
+      }
+    }
   }
 }
