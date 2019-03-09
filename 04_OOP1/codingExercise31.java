@@ -57,18 +57,25 @@ public class codingExercise31 {
     private double height;
 
     public Wall() {
-
     }
-    public Wall(double width, double height) {
-      this.width = width;
-      this.height = height;
 
-      if(width < 0) {
+    public Wall(double width, double height) {
+      if(width < 0 && height < 0) {
         this.width = 0;
+        this.height = 0;
       } else if (height < 0) {
         this.height = 0;
+        this.width = width;
+      } else if (width < 0) {
+        this.height = height;
+        this.width = 0;
+      } else {
+        this.width = width;
+        this.height = height;
       }
     }
+
+
     public double getWidth() {
       return this.width;
     }
