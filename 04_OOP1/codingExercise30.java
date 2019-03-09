@@ -91,7 +91,7 @@ public class codingExercise30 {
       this.lastName = lastName;
     }
     public void setAge(int age){
-      if (age < 0 && age > 100) {
+      if (age < 0 || age > 100) {
         this.age = 0;
       } else {
         this.age = age;
