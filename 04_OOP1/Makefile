@@ -2,11 +2,8 @@ JR = time java
 JCC = javac
 JFLAGS = -g
 
-default: oopClass.class #codingExercise29.class codingExercise30.class codingExercise31.class codingExercise32.class codingExercise33.class codingExercise34.class codingExercise35.class codingExercise36.class
+default: #codingExercise29.class codingExercise30.class codingExercise31.class codingExercise32.class codingExercise33.class codingExercise34.class codingExercise35.class codingExercise36.class
 
-oopClass.class: oopClass/oopClass.java
-	$(JCC) $(JFLAGS) oopClass/oopClass.java
-	$(JR) oopClass/oopClass
 #codingExercise29.class: codingExercise29.java
 #	$(JCC) $(JFLAGS) codingExercise29.java
 #	$(JR) codingExercise29
