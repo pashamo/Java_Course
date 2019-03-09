@@ -6,19 +6,16 @@ public class Car{
   private String engine;
   private String colour;
 
-  Car() {
-    this.doors = 2;
-    this.wheels = 4;
-    this.model = "Challenger";
-    this.engine = "392 Hemi";
-    this.colour = "Yellow Jacket";
+  public void setModel(String model) {
+    String validModel = model.toLowerCase();
+    if(validModel.equals("challenger")) {
+      this.model = model;
+    } else {
+      this.model = "unknown";
+    }
   }
 
-  public String toString() {
-    return "Doors: "+this.doors+
-    "\nWheels: "+this.wheels+
-    "\nModel: "+this.model+
-    "\nEngine: "+this.engine+
-    "\nColour: "+this.colour;
+  public String getModel() {
+    return this.model;
   }
 }

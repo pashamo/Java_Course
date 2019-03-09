@@ -4,7 +4,8 @@ public class oopClass {
     System.out.println("-----oopClass-----");
 
     Car dodge = new Car();
-    System.out.println(dodge.toString());
+    dodge.setModel("Charger");
+    System.out.println(dodge.getModel());
 
     System.out.println("-----END-----");
   }
