@@ -104,7 +104,7 @@ public class oopEncapsulation {
     }
     public void printPage(int pages) {
       if (duplex) {
-        this.pagesPrinted += pages*2;
+        this.pagesPrinted += pages/2 + pages%2;
       } else {
         this.pagesPrinted += pages;
       }
