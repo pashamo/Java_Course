@@ -2,11 +2,22 @@ public class oopPolymorphism {
   public static void main(String[] args){
     System.out.println("-----oopPolymorphism-----");
 
-    for(int i = 1; i<11; i++) {
+    for(int i = 0; i<5; i++) {
         Movie movie = randomMovie();
         System.out.println("Movie #"+i+": "+movie.getName()+"\n\t"+movie.plot()+"\n");
     }
 
+    System.out.println("-----");
+
+    for(int i = 0; i<6; i++) {
+      Car car = randomCar();
+      System.out.println("Car #"+i+": "+car.manufacturer+" "+car.model+"");
+      System.out.println("\tCylinders: "+car.getCylinders());
+      System.out.println("\tDoors: "+car.getDoors());
+      System.out.println("\t"+ car.startEngine());
+      System.out.println("\t"+ car.accelerate());
+      System.out.println("\t"+ car.brake() +"\n");
+    }
 
     System.out.println("-----END-----");
   }
@@ -39,6 +50,20 @@ public class oopPolymorphism {
       default:
         movie = "NULL";
         System.out.println("randomNumber: "+randomNumber+"\t movie: "+movie);
+        return null;
+    }
+  }
+
+  public static Car randomCar() {
+    int randomNumber = (int) (Math.random()*3)+1;
+    switch(randomNumber) {
+      case 1:
+        return new Patrol();
+      case 2:
+        return new Challenger();
+      case 3:
+        return new Venza();
+      default:
         return null;
     }
   }
@@ -114,5 +139,88 @@ public class oopPolymorphism {
     //No Overriden plot method
   }
 
+
+
+
+  //Car Challenge
+  public static class Car {
+    private String manufacturer;
+    private String model;
+    private boolean engine = true;
+    private int cylinders;
+    private int wheels = 4;
+    private int doors;
+
+    public Car(String manufacturer, String model, int cylinders, int doors) {
+      this.manufacturer = manufacturer;
+      this.model = model;
+      this.cylinders = cylinders;
+      this.doors = doors;
+    }
+    public String getManufacturer() {
+      return manufacturer;
+    }
+    public String getModel() {
+      return model;
+    }
+    public boolean getEngine() {
+      return engine;
+    }
+    public int getCylinders() {
+      return cylinders;
+    }
+    public int getWheels() {
+      return wheels;
+    }
+    public int getDoors() {
+      return doors;
+    }
+    public String startEngine() {
+      return "CAR engine starts";
+    }
+    public String accelerate() {
+      return "CAR increases speed";
+    }
+    public String brake() {
+      return "CAR brake applied";
+    }
+  }
+
+
+  public static class Patrol extends Car{
+    public Patrol() {
+      super("Nissan","Patrol",8,4);
+    }
+    @Override
+    public String startEngine() {
+      return "PATROL engine starts and makes me feel good :)";
+    }
+    @Override
+    public String brake() {
+      return "PATROL brake applied, Body tilts forward";
+    }
+  }
+
+
+  public static class Challenger extends Car{
+    public Challenger() {
+      super("Dodge","Challenger",8,2);
+    }
+    @Override
+    public String startEngine() {
+      return "Challenger engine roars";
+    }
+    @Override
+    public String accelerate() {
+      return "Challenger increases speed and engine roars!";
+    }
+  }
+
+
+  public static class Venza extends Car{
+    public Venza() {
+      super("Toyota","Venza",4,4);
+    }
+  }
 
 }
