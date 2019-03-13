@@ -34,20 +34,42 @@ public class autoboxUnboxChallenge {
     customer2.addTransaction(-149.99);
     System.out.println(customer1.toString());
     System.out.println(customer2.toString());
+    Customer customer3 = new Customer("Minhaz", 5000.00);
+
+
     Branch branch = new Branch(12345);
     branch.addCustomer(customer1);
     branch.addCustomer(customer2);
     System.out.println(branch.toString());
+    branch.addCustomerTransaction(customer1.getCustName(), -349.99);
+    System.out.println(branch.toString());
+
+
+    Bank bank = new Bank("Bank of Montreal");
+    bank.addBranch(branch);
+    System.out.println(bank.toString());
+    bank.addCustomerToBranch(12345,customer3);
+    System.out.println(bank.toString());
+    bank.addCustomerTransactionFromBank(12345, "Mohammed", -200.00);
+    System.out.println(bank.toString());
 
     System.out.println("-----END-----");
   }
 
 
   public static class Bank {
+    private String bankName;
     private ArrayList<Branch> branches;
 
-    public Bank() {
+    public Bank(String bankName) {
+      this.bankName = bankName;
       branches = new ArrayList<Branch>();
+    }
+    public String getBankName() {
+      return this.bankName;
+    }
+    public void setBankName(String bankName) {
+      this.bankName = bankName;
     }
     public ArrayList<Branch> getBranches() {
       return branches;
@@ -57,6 +79,39 @@ public class autoboxUnboxChallenge {
     }
     public void addBranch(Branch br) {
       this.branches.add(br);
+    }
+    public void addCustomerToBranch(int brNumber, Customer customer) {
+      for(int i = 0; i < branches.size(); i++) {
+        if(this.branches.get(i).getBrNumber() == brNumber) {
+          Branch br = this.branches.get(i);
+          br.addCustomer(customer);
+          this.branches.set(i, br);
+          System.out.println("Customer for Branch added");
+          break;
+        } else {
+          System.out.println("Customer not added");
+        }
+      }
+    }
+    public void addCustomerTransactionFromBank(int brNumber, String custName, double trns) {
+      for (int i = 0; i<branches.size(); i++) {
+        if(this.branches.get(i).getBrNumber() == brNumber) {
+          Branch br = this.branches.get(i);
+          br.addCustomerTransaction(custName, trns);
+          this.branches.set(i, br);
+          System.out.println("Customer record at branch appended");
+          break;
+        } else {
+          System.out.println("Customer record not updated");
+        }
+      }
+    }
+    public String toString() {
+      String temp = bankName + "\n";
+      for(int i = 0; i<branches.size(); i++) {
+        temp += branches.get(i).toString();
+      }
+      return temp;
     }
 
   }
@@ -92,9 +147,11 @@ public class autoboxUnboxChallenge {
           temp.addTransaction(Double.valueOf(trns));
           this.customers.set(i, temp);
           System.out.println("Transaction for customer added");
+          break;
+        } else {
+          System.out.println("Transaction not added");
         }
       }
-      System.out.println("Transaction not added");
     }
     public boolean isCustomer(String name) {
       return true;
